@@ -109,7 +109,7 @@
 }
 
 - (void)contextMenuInteraction:(UIContextMenuInteraction *)interaction willPerformPreviewActionForMenuWithConfiguration:(UIContextMenuConfiguration *)configuration
-                      animator:(id<UIContextMenuInteractionCommitAnimating>)animator {
+                      animator:(id<UIContextMenuInteractionCommitAnimating>)animator  API_AVAILABLE(ios(13.0)){
     
     self->cancelled = false;
     self.onPress(@{

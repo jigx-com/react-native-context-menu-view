@@ -7,7 +7,10 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ContextMenu title={'Set Color'} actions={[
+      <ContextMenu title={'Set Color'} 
+        //comment out the line below to not use a custom preview view
+        previewController={'previewView'}
+        actions={[
         {
           title: 'blue',
           systemIcon: color === 'blue' ? 'paintbrush.fill' : 'paintbrush',
