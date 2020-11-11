@@ -40,14 +40,18 @@
 
 - (nullable UIContextMenuConfiguration *)contextMenuInteraction:(nonnull UIContextMenuInteraction *)interaction configurationForMenuAtLocation:(CGPoint)location  API_AVAILABLE(ios(13.0)){
   return [UIContextMenuConfiguration
-        configurationWithIdentifier:nil
-        previewProvider:^ UIViewController* {
-        RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:nil];
-        RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge moduleName:self.previewController initialProperties:nil];
-        UIViewController *vc = [[UIViewController alloc] init];
-        rootView.userInteractionEnabled = true;
-        vc.view = rootView;
-        return vc;
+    configurationWithIdentifier:nil
+    previewProvider:^ UIViewController*{
+      if ([self.previewController length] == 0) {
+          return nil;
+      } else {
+          RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:nil];
+          RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge moduleName:self.previewController initialProperties:nil];
+          UIViewController *vc = [[UIViewController alloc] init];
+          rootView.userInteractionEnabled = true;
+          vc.view = rootView;
+          return vc;
+      }
     }
     actionProvider:^UIMenu * _Nullable(NSArray<UIMenuElement *> * _Nonnull suggestedActions) {
     NSMutableArray* actions = [[NSMutableArray alloc] init];
