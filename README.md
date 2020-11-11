@@ -25,6 +25,7 @@ import ContextMenu from "react-native-context-menu-view";
 const Example = () => {
   return (
     <ContextMenu
+      previewController={'yourRNViewClass'}
       actions={[{ title: "Title 1" }, { title: "Title 2" }]}
       onPress={(e) => {
         console.warn(
@@ -46,6 +47,10 @@ See `example/` for basic usage.
 
 Optional. The title above the popup menu.
 
+###### `previewController`
+
+Optional. The name of the React Native view you want to display as a custom preview
+
 ###### `actions`
 
 Array of `{ title: string, systemIcon?: string, destructive?: boolean, disabled?: boolean }`.
@@ -56,7 +61,7 @@ Destructive items are rendered in red on iOS, and unchanged on Android.
 
 ###### `onPress`
 
-Optional. When the popup is opened and the user picks an option. Called with `{ nativeEvent: { index, name } }`.
+Optional. When the popup is opened and the user picks an option. Called with `{ nativeEvent: { index, name } }`. Will return "preview" if the preview view was touched.
 
 ###### `onCancel`
 
