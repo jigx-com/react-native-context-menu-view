@@ -8,6 +8,9 @@
 
 #import "ContextMenuView.h"
 #import <React/UIView+React.h>
+#import <React/RCTBridge.h>
+#import <React/RCTBundleURLProvider.h>
+#import <React/RCTRootView.h>
 
 @implementation ContextMenuView {
   BOOL cancelled;
@@ -95,7 +98,7 @@
                       animator:(id<UIContextMenuInteractionAnimating>)animator  API_AVAILABLE(ios(13.0)) API_AVAILABLE(ios(13.0)){
 
   if (cancelled && self.onCancel) {
-    self.onCancel(@{});
+    self.onCancel(@{@"obj": @"cancelled"});
   }
 
 }

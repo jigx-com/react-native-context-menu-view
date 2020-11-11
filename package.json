@@ -11,7 +11,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mwa3aan/react-native-context-menu-view.git",
-    "baseUrl": "https://github.com/mwa3aan/react-native-context-menu-view.git"
+    "baseUrl": "https://github.com/mwa3aan/react-native-context-menu-view"
   },
   "keywords": [
     "react-native"
