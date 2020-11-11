@@ -1,55 +1,61 @@
-import React, { useState } from 'react';
-import { SafeAreaView, View, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import {SafeAreaView, View, StyleSheet, AppRegistry} from 'react-native';
 import ContextMenu from 'react-native-context-menu-view';
 import previewView from './previewView';
 
+AppRegistry.registerComponent('previewView', () => previewView);
+
 const App = () => {
   const [color, setColor] = useState('blue');
-  AppRegistry.registerComponent('previewView', () => previewView);
 
   return (
     <SafeAreaView style={styles.container}>
-      <ContextMenu title={'Set Color'} 
+      <ContextMenu
+        title={'Set Color'}
         //comment out the line below to not use a custom preview view
         previewController={'previewView'}
         actions={[
-        {
-          title: 'blue',
-          systemIcon: color === 'blue' ? 'paintbrush.fill' : 'paintbrush',
-        },
-        {
-          title: 'red',
-          systemIcon: color === 'red' ? 'paintbrush.fill' : 'paintbrush',
-        },
-        {
-          title: 'transparent',
-          systemIcon: 'trash',
-          destructive: true,
-        },
-        {
-          title: 'disabled item',
-          disabled: true,
-        },
-      ]} onPress={(event) => {
-        console.warn(event.nativeEvent.name);
-        setColor(event.nativeEvent.name);
-      }} onCancel={() => { console.warn('CANCELLED') }} >
-        <View style={[styles.rectangle, {backgroundColor: color }]} />
+          {
+            title: 'blue',
+            systemIcon: color === 'blue' ? 'paintbrush.fill' : 'paintbrush',
+          },
+          {
+            title: 'red',
+            systemIcon: color === 'red' ? 'paintbrush.fill' : 'paintbrush',
+          },
+          {
+            title: 'transparent',
+            systemIcon: 'trash',
+            destructive: true,
+          },
+          {
+            title: 'disabled item',
+            disabled: true,
+          },
+        ]}
+        onPress={(event) => {
+          console.warn(event.nativeEvent.name);
+          setColor(event.nativeEvent.name);
+        }}
+        onCancel={() => {
+          console.warn('CANCELLED');
+        }}>
+        <View style={[styles.rectangle, {backgroundColor: color}]} />
       </ContextMenu>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   rectangle: {
-    width: 200, 
+    width: 200,
     height: 200,
-  }
+  },
 });
 
 export default App;
