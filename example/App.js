@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {SafeAreaView, View, StyleSheet, AppRegistry} from 'react-native';
 import ContextMenu from 'react-native-context-menu-view';
-import previewView from './previewView';
+import listView from './listView';
 
-AppRegistry.registerComponent('previewView', () => previewView);
+AppRegistry.registerComponent('listView', () => listView);
 
 const App = () => {
   const [color, setColor] = useState('blue');
@@ -13,7 +13,7 @@ const App = () => {
       <ContextMenu
         title={'Set Color'}
         //comment out the line below to not use a custom preview view
-        previewController={'previewView'}
+        previewController={'listView'}
         actions={[
           {
             title: 'blue',
