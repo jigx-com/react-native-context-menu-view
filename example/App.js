@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, StyleSheet } from 'react-native';
 import ContextMenu from 'react-native-context-menu-view';
+import previewView from './previewView';
 
 const App = () => {
   const [color, setColor] = useState('blue');
+  AppRegistry.registerComponent('previewView', () => previewView);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -29,6 +31,7 @@ const App = () => {
           disabled: true,
         },
       ]} onPress={(event) => {
+        console.warn(event.nativeEvent.name);
         setColor(event.nativeEvent.name);
       }} onCancel={() => { console.warn('CANCELLED') }} >
         <View style={[styles.rectangle, {backgroundColor: color }]} />
