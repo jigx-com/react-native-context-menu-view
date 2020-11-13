@@ -48,9 +48,13 @@
       if ([self.previewController length] == 0) {
           return nil;
       } else {
+
           RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:nil];
-          RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge moduleName:self.previewController initialProperties:nil];
+          RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge moduleName:self.previewController initialProperties:self.previewControllerProperties];
           UIViewController *vc = [[UIViewController alloc] init];
+          if (self.previewControllerWidth != 0 || self.previewControllerHeight != 0) {
+              [vc setPreferredContentSize: CGSizeMake(self.previewControllerWidth, self.previewControllerHeight)];
+          };
           rootView.userInteractionEnabled = true;
           vc.view = rootView;
           return vc;

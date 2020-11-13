@@ -63,11 +63,14 @@ const Item = ({title}) => (
   </ContextMenu>
 );
 
-const listView = () => {
+const listView = (props) => {
   const renderItem = ({item}) => <Item title={item.title} />;
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text>
+        {'Adriaan is ' + props.age + ' years old. ' + props.otherParam}
+      </Text>
       <FlatList
         data={DATA}
         renderItem={renderItem}

@@ -14,6 +14,11 @@ const Home = ({navigation}) => {
         title={'Set Color'}
         //comment out the line below to not use a custom preview view
         previewController={'listView'}
+        previewControllerHeight={300}
+        previewControllerProperties={{
+          age: 28,
+          otherParam: 'anything you want here',
+        }}
         actions={[
           {
             title: 'blue',
@@ -36,7 +41,12 @@ const Home = ({navigation}) => {
         onPress={(event) => {
           console.warn(event.nativeEvent.name);
           if (event.nativeEvent.name === 'preview') {
-            navigation.navigate('listView');
+            navigation.navigate('listView', {
+              props: {
+                age: 28,
+                otherParam: 'anything you want here',
+              },
+            });
           } else {
             setColor(event.nativeEvent.name);
           }

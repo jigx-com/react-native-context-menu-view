@@ -14,9 +14,11 @@
 
 @property (nonatomic, copy) NSString* title;
 @property (nonatomic, copy) NSString* previewController;
+@property (nonatomic, copy) NSDictionary* previewControllerProperties;
+@property (nonatomic, assign) NSInteger previewControllerHeight;
+@property (nonatomic, assign) NSInteger previewControllerWidth;
 @property (nonatomic, copy) RCTBubblingEventBlock onPress;
 @property (nonatomic, copy) RCTBubblingEventBlock onCancel;
 @property (nonatomic, copy) NSArray<ContextMenuAction*>* actions;
-
 
 @end
