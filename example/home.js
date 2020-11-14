@@ -1,19 +1,22 @@
 import React, {useState} from 'react';
-import {SafeAreaView, View, StyleSheet, AppRegistry} from 'react-native';
+import {SafeAreaView, View, StyleSheet, AppRegistry, Text} from 'react-native';
 import ContextMenu from 'react-native-context-menu-view';
+import {useSelector} from 'react-redux';
 import listView from './listView';
 
 AppRegistry.registerComponent('listView', () => listView);
 
 const Home = ({navigation}) => {
   const [color, setColor] = useState('blue');
+  const counter = useSelector((state) => state.value);
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text>{`Counter from redux: ${counter}`}</Text>
       <ContextMenu
         title={'Set Color'}
         //comment out the line below to not use a custom preview view
-        previewController={'listView'}
+        previewController={'previewView'}
         previewControllerHeight={300}
         previewControllerProperties={{
           age: 28,
