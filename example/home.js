@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {SafeAreaView, View, StyleSheet, AppRegistry, Text} from 'react-native';
 import ContextMenu from 'react-native-context-menu-view';
 import {useSelector} from 'react-redux';
-import listView from './listView';
+//import listView from './listView';
 
-AppRegistry.registerComponent('listView', () => listView);
+//AppRegistry.registerComponent('listView', () => listView);
 
 const Home = ({navigation}) => {
   const [color, setColor] = useState('blue');
@@ -12,15 +12,14 @@ const Home = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text>{`Counter from redux: ${counter}`}</Text>
+      <Text>{`Counter from redux : ${counter}`}</Text>
       <ContextMenu
         title={'Set Color'}
-        //comment out the line below to not use a custom preview view
-        previewController={'previewView'}
+        //preview controller uses the main view that is wrapped in redux. then in that view you determine what to render to keep the redux state in place
+        previewController={'example'} //example is the name of the app's main view
         previewControllerHeight={300}
         previewControllerProperties={{
-          age: 28,
-          otherParam: 'anything you want here',
+          initCfg: 1,
         }}
         actions={[
           {
@@ -45,10 +44,7 @@ const Home = ({navigation}) => {
           console.warn(event.nativeEvent.name);
           if (event.nativeEvent.name === 'preview') {
             navigation.navigate('listView', {
-              props: {
-                age: 28,
-                otherParam: 'anything you want here',
-              },
+              initCfg: 1,
             });
           } else {
             setColor(event.nativeEvent.name);

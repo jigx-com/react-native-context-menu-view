@@ -48,8 +48,11 @@
       if ([self.previewController length] == 0) {
           return nil;
       } else {
+          
+          NSObject* mAppD = [[UIApplication sharedApplication] delegate];
+          RCTBridge *bridge = [mAppD performSelector:@selector(shareBridge)];
 
-          RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:nil];
+//          RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:nil];
           RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge moduleName:self.previewController initialProperties:self.previewControllerProperties];
           UIViewController *vc = [[UIViewController alloc] init];
           if (self.previewControllerWidth != 0 || self.previewControllerHeight != 0) {

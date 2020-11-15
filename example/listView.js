@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   SafeAreaView,
   FlatList,
@@ -9,7 +9,7 @@ import {
   AppRegistry,
 } from 'react-native';
 import ContextMenu from 'react-native-context-menu-view';
-import previewView from './previewView';
+import {useDispatch, useSelector} from 'react-redux';
 
 const DATA = [
   {
@@ -26,12 +26,11 @@ const DATA = [
   },
 ];
 
-AppRegistry.registerComponent('previewView', () => previewView);
 
 const Item = ({title}) => (
   <ContextMenu
     title={'Set Color for ' + title}
-    previewController={'previewView'}
+    //previewController={'previewView'} commented out to test the redux wrapper on the listview.
     actions={[
       {
         title: 'blue',
@@ -63,13 +62,22 @@ const Item = ({title}) => (
   </ContextMenu>
 );
 
-const listView = (props) => {
+const ListView = (props) => {
+  const counter = useSelector((state) => state.value);
   const renderItem = ({item}) => <Item title={item.title} />;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: 'counter/incremented',
+    });
+  }, [dispatch]);
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text>{`Counter from redux: ${counter}`}</Text>
       <Text>
-        {'Adriaan is ' + props.age + ' years old. ' + props.otherParam}
+        {'Adriaan was ' + props.age + ' years old. ' + props.otherParam}
       </Text>
       <FlatList
         data={DATA}
@@ -96,4 +104,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default listView;
+export default ListView;
