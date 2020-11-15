@@ -1,3 +1,7 @@
+
+///// this is not implimented correctly. i just updated listview to test the concept. 
+
+
 import React from 'react';
 import {SafeAreaView, Text, StyleSheet} from 'react-native';
 import {useSelector} from 'react-redux';
