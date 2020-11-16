@@ -19,6 +19,17 @@ pod install
 
 ## Usage
 
+## Objective C Notes
+In order to share the main React Native RCTBridge instantiated in the AppDelegate with the preview view controller one method needs to be added to the AppDelegate in the Objective C project. AppDelegate.h needs to be updated to reflect the method and AppDelegate.m needs to be updaed to declare the bridge globally and a method to share the bridge whe requested but the POD file.
+
+These changes are shown in the example ios project.
+
+## Javascript notes
+
+The example project has been updated with redux tio show state managed between the main navigation and the preview view. This implimentation is conceptial and can be modified by the React Native Developer.
+
+See `example/` for basic usage.
+
 ```javascript
 import ContextMenu from "react-native-context-menu-view";
 
@@ -38,8 +49,6 @@ const Example = () => {
   );
 };
 ```
-
-See `example/` for basic usage.
 
 ## Props
 
