@@ -35,6 +35,16 @@ export interface ContextMenuProps extends ViewProps {
 	 */
 	actions?: Array<ContextMenuAction>;
 	/**
+	 * This is name of registered component you want to render.
+	 *
+	 * AppRegistry.registerComponent('previewController', () => PreviewController)
+	 */
+	previewController?: string
+	/**
+	 * These props will be send to previewController component.
+	 */
+	previewControllerProperties?: Record<string, unknown>
+	/**
 	 * Handle when an action is triggered and the menu is closed. The name of the selected action will be passed in the event. 
 	 */
 	onPress?: (e: NativeSyntheticEvent<ContextMenuOnPressNativeEvent>) => void;
